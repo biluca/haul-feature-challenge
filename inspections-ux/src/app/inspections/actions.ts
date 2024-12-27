@@ -1,6 +1,6 @@
 import { Inspection, InspectionsData, Vehicle } from "./interfaces";
 
-const inspections_api_url = "http://127.0.0.1:3001";
+const INSPECTIONS_API_URL = "http://127.0.0.1:3001";
 
 export async function getInspections(params: {
   basic?: string;
@@ -25,7 +25,7 @@ export async function getInspections(params: {
     queryParams.set("page", params.page);
   }
 
-  const url = `${inspections_api_url}/inspections?${queryParams.toString()}`;
+  const url = `${INSPECTIONS_API_URL}/inspections?${queryParams.toString()}`;
 
   console.log("URL", url);
 
@@ -37,7 +37,7 @@ export async function getInspections(params: {
 }
 
 export async function getInspection(reportNumber: string): Promise<Inspection> {
-  const url = `${inspections_api_url}/inspections/${reportNumber}/`;
+  const url = `${INSPECTIONS_API_URL}/inspections/${reportNumber}/`;
   console.log("URL", url);
   const response = await fetch(url, {
     method: "GET",
@@ -48,7 +48,7 @@ export async function getInspection(reportNumber: string): Promise<Inspection> {
 }
 
 export async function getVehicleDetails(vin_code: string): Promise<Vehicle> {
-  const url = `${inspections_api_url}/vehicles/${vin_code}/`;
+  const url = `${INSPECTIONS_API_URL}/vehicles/${vin_code}/`;
   console.log("URL", url);
   const response = await fetch(url, {
     method: "GET",

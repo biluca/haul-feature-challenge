@@ -57,18 +57,6 @@ export class InspectionDTOBuilder {
   }
 
   build(): InspectionDTO {
-    // if (
-    //   !this.inspection_date ||
-    //   !this.report_state ||
-    //   !this.report_number ||
-    //   !this.level ||
-    //   !this.time_weight ||
-    //   !this.Placarable_HM_Veh_Insp ||
-    //   !this.HM_inspection
-    // ) {
-    //   throw new Error('Missing required fields for InspectionDTO.');
-    // }
-
     const inspectionDTO = new InspectionDTO();
     inspectionDTO.inspection_date = this.inspection_date;
     inspectionDTO.report_state = this.report_state;

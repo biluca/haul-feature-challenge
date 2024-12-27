@@ -41,7 +41,7 @@ export default function VehicleModal({
         }}
       >
         {loading ? (
-          <p className="text-haul font-bold">Loading...</p>
+          <label className="text-haul font-bold">Loading...</label>
         ) : vehicleDetail ? (
           <div>
             <div className="flex items-center justify-between p-4 bg-gray-800 rounded-t-md shadow-md mb-2">
@@ -71,7 +71,7 @@ export default function VehicleModal({
             </div>
           </div>
         ) : (
-          <p className="text-haul font-bold">Failed to load data.</p>
+          <label className="text-haul font-bold">Failed to load data.</label>
         )}
       </div>
     </div>

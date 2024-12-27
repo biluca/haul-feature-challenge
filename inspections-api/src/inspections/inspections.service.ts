@@ -1,14 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { AdministrationProviderService } from 'src/data/administration-provider.service';
 import { PageOptionsDTO, PageDTO, PageMetaDTO } from './dto/page.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { InspectionDTO } from './dto/inspections.dto';
 
 @Injectable()
 export class InspectionsService {
-  constructor(
-    private administrationProviderService: AdministrationProviderService,
-    private prismaService: PrismaService,
-  ) {}
+  constructor(private prismaService: PrismaService) {}
 
   async getInspections(pageOptionsDTO: PageOptionsDTO) {
     console.log('Reached InspectionsService on getInspections()');
@@ -48,9 +45,8 @@ export class InspectionsService {
     filterData['skip'] = pageOptionsDTO.skip;
     filterData['take'] = pageOptionsDTO.take;
 
-    const [inspectionData] = await this.prismaService.$transaction([
-      this.prismaService.inspections.findMany(filterData),
-    ]);
+    const inspectionData: Array<InspectionDTO> =
+      await this.prismaService.inspections.findMany(filterData);
 
     const pageMetaDto = new PageMetaDTO({ itemCount, pageOptionsDTO });
 

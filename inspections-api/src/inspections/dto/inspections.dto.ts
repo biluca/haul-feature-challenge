@@ -4,31 +4,20 @@ export class VehicleDTO {
   unit_type?: string;
   license_state?: string;
   license_number?: string;
-
-  constructor(data: {
-    unit: string;
-    vehicle_id_number?: string;
-    unit_type?: string;
-    license_state?: string;
-    license_number?: string;
-  }) {
-    this.unit = data.unit;
-    this.vehicle_id_number = data.vehicle_id_number;
-    this.unit_type = data.unit_type;
-    this.license_state = data.license_state;
-    this.license_number = data.license_number;
-  }
 }
 
 export class ViolationDTO {
   convicted_of_dif_charge: string;
-
-  constructor(data: { convicted_of_dif_charge: string }) {
-    this.convicted_of_dif_charge = data.convicted_of_dif_charge;
-  }
+  BASIC: string;
+  code: string;
+  description: string;
+  oos: string;
+  time_severity_weight: string;
+  unit: string;
 }
 
 export class InspectionDTO {
+  id: string;
   inspection_date: string;
   report_state: string;
   report_number: string;

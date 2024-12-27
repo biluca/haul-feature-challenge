@@ -13,14 +13,22 @@ export class VehiclesService {
     return normalizedVehicleData;
   }
 
+  private formatField(field: string) {
+    return field
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/^ /, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
   private normalizeData(vehicleData: object) {
     const ignoreValues = ['', 'Not Applicable', 'Not Reported'];
-    const ignoreFields = ['ErrorCode', 'ErrorText'];
+    const ignoreFields = ['ErrorCode', 'ErrorText', 'AdditionalErrorText'];
 
     return Object.entries(vehicleData)
       .filter(([key, value]) => !ignoreFields.includes(key))
       .filter(([key, value]) => !ignoreValues.includes(value))
-      .map(([key, value]) => ({ field: key, value }));
+      .map(([key, value]) => ({ field: this.formatField(key), value }));
   }
 
   private async callVehicleAPI(vin_code: string) {

@@ -7,7 +7,7 @@ export default function InspectionsLayout({
 }>) {
   return (
     <div className="p-10 bg-black min-h-screen">
-      <Header title="DOT Inspections" showHomeButton={true} />
+      <Header title="Inspections Viewer" showHomeButton={true} />
       {children}
     </div>
   );
